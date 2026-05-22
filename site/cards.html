@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>西番芥的秘境工具箱 · 副本技能卡片</title>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23f59e0b'/><text x='50%25' y='54%25' font-family='PingFang SC,Microsoft Yahei,sans-serif' font-size='38' font-weight='700' fill='%23111' text-anchor='middle' dominant-baseline='middle'>西</text></svg>" />
+<style>
+  /* ============================================================
+     主题变量系统 - 添加新主题:复制一份 [data-theme="xxx"] 即可
+     ============================================================ */
+
+  /* ===== 主题1:WoW 魔幻暗夜风 (dark) ===== */
+  [data-theme="dark"] {
+    --page-bg: #020308;
+    --card-bg-grad: linear-gradient(160deg, #0d1220 0%, #0a0f1d 50%, #060912 100%);
+    --card-border-grad: linear-gradient(135deg, #f5b53f 0%, #a78bfa 50%, #b8740d 100%);
+    --card-shadow: 0 24px 60px rgba(0,0,0,.7), 0 0 0 1px rgba(245,181,63,.08), inset 0 1px 0 rgba(255,255,255,.04);
+    --page-glow: radial-gradient(1000px 500px at 50% -10%, rgba(124,58,237,.10), transparent 60%),
+                 radial-gradient(700px 350px at 50% 110%, rgba(245,181,63,.06), transparent 60%);
+    --card-top-glow: radial-gradient(500px 180px at 20% 0%, rgba(245,181,63,.14), transparent 70%),
+                     radial-gradient(400px 180px at 80% 0%, rgba(167,139,250,.10), transparent 70%);
+    --rune-dot-1: rgba(245,181,63,.025);
+    --rune-dot-2: rgba(167,139,250,.02);
+
+    --text: #f3eafe;
+    --muted: #8a93b0;
+    --accent: #f5b53f;          /* 金色 - 主题主色 */
+    --accent-2: #ffd066;        /* 亮金 - 标题 */
+    --accent-deep: #b8740d;     /* 深金 - 渐变末端 */
+    --accent-on: #1a0e02;       /* 在金色上的文字色 */
+    --aux: #a78bfa;             /* 辅助 - 紫 */
+    --aux-deep: #6d28d9;
+    --link: #60a5fa;            /* 技能名链接色 */
+    --danger: #ff5b6e;
+    --green: #4ade80;
+
+    --toolbar-bg: rgba(13,18,32,.85);
+    --toolbar-border: #2a3550;
+    --select-bg: #0d1220;
+
+    --mob-bg: rgba(20,26,44,.85);
+    --mob-border: rgba(138,147,176,.18);
+    --mob-divider: rgba(138,147,176,.12);
+    --mob-header-bg: rgba(6,9,18,.7);
+    --mob-count-bg: rgba(167,139,250,.10);
+    --mob-count-border: rgba(167,139,250,.2);
+    --mob-name-color: #ffffff;
+    --mob-name-shadow: 0 0 8px rgba(167,139,250,.35);
+
+    --boss-border: rgba(245,181,63,.55);
+    --boss-bg: linear-gradient(135deg, rgba(245,181,63,.10), rgba(20,26,44,.85));
+    --boss-shadow: 0 0 0 1px rgba(245,181,63,.25), 0 6px 18px rgba(245,181,63,.10);
+    --boss-header-bg: linear-gradient(90deg, rgba(245,181,63,.22), rgba(6,9,18,.7));
+
+    --desc-bg: rgba(6,9,18,.7);
+    --desc-text: #d8def0;
+    --counter-bg: rgba(245,181,63,.10);
+
+    --footer-bg: linear-gradient(90deg, rgba(6,9,18,.95), rgba(13,18,32,.95));
+    --footer-border: rgba(245,181,63,.30);
+    --header-border: rgba(245,181,63,.20);
+    --stats-bg: linear-gradient(90deg, rgba(245,181,63,.10), rgba(96,165,250,.08));
+    --stats-border: rgba(245,181,63,.18);
+
+    --watermark-big-color: rgba(245,181,63,.06);
+    --watermark-mid-color: rgba(167,139,250,.04);
+
+    --tag-int-bg: rgba(255,91,110,.18); --tag-int-c: #ff5b6e; --tag-int-bd: rgba(255,91,110,.5);
+    --tag-mag-bg: rgba(167,139,250,.20); --tag-mag-c: #a78bfa; --tag-mag-bd: rgba(167,139,250,.5);
+    --tag-enrage-bg: rgba(255,91,110,.15); --tag-enrage-c: #ff7a7a; --tag-enrage-bd: rgba(255,91,110,.4);
+    --tag-bleed-bg: rgba(205,133,63,.18); --tag-bleed-c: #f0a050; --tag-bleed-bd: rgba(205,133,63,.4);
+    --tag-poison-bg: rgba(74,222,128,.15); --tag-poison-c: #4ade80; --tag-poison-bd: rgba(74,222,128,.4);
+    --tag-disease-bg: rgba(174,213,129,.15); --tag-disease-c: #c5e1a5; --tag-disease-bd: rgba(174,213,129,.4);
+    --tag-curse-bg: rgba(206,147,216,.15); --tag-curse-c: #d8b4e8; --tag-curse-bd: rgba(206,147,216,.4);
+
+    --season-bg: linear-gradient(135deg, #a78bfa 0%, #6d28d9 100%);
+    --season-c: #fff;
+    --season-shadow: 0 4px 12px rgba(124,58,237,.4);
+
+    --logo-bg: linear-gradient(135deg, #ffd066 0%, #b8740d 100%);
+    --logo-shadow: 0 0 0 2px rgba(245,181,63,.4), 0 0 16px rgba(245,181,63,.35), inset 0 2px 0 rgba(255,255,255,.3);
+    --title-shadow: 0 0 16px rgba(245,181,63,.4), 0 2px 4px rgba(0,0,0,.6);
+  }
+
+  /* ===== 主题2:小红书亮色奶油风 (light) ===== */
+  [data-theme="light"] {
+    --page-bg: #fff5f0;
+    --card-bg-grad: linear-gradient(160deg, #ffffff 0%, #fffaf6 50%, #fff5ee 100%);
+    --card-border-grad: linear-gradient(135deg, #ff7a8a 0%, #ffb86b 50%, #ff6b9d 100%);
+    --card-shadow: 0 16px 40px rgba(255,107,157,.10), 0 4px 12px rgba(0,0,0,.04), 0 0 0 1px rgba(255,182,193,.20);
+    --page-glow: radial-gradient(900px 500px at 50% -10%, rgba(255,182,193,.25), transparent 60%),
+                 radial-gradient(700px 350px at 50% 110%, rgba(255,220,180,.20), transparent 60%);
+    --card-top-glow: radial-gradient(500px 180px at 20% 0%, rgba(255,182,193,.18), transparent 70%),
+                     radial-gradient(400px 180px at 80% 0%, rgba(255,220,180,.18), transparent 70%);
+    --rune-dot-1: rgba(255,107,157,.04);
+    --rune-dot-2: rgba(255,184,107,.03);
+
+    --text: #3d2a35;
+    --muted: #9a7f88;
+    --accent: #ff6b9d;          /* 小红书粉 */
+    --accent-2: #ff5577;        /* 深一点的粉 */
+    --accent-deep: #d63864;
+    --accent-on: #ffffff;
+    --aux: #ffb86b;             /* 奶油橙 */
+    --aux-deep: #ff8c42;
+    --link: #ff6b9d;
+    --danger: #ff4d6d;
+    --green: #4ec98a;
+
+    --toolbar-bg: rgba(255,255,255,.90);
+    --toolbar-border: #ffd6e0;
+    --select-bg: #ffffff;
+
+    --mob-bg: #fffaf7;
+    --mob-border: rgba(255,182,193,.35);
+  --mob-divider: rgba(255,182,193,.30);
+    --mob-header-bg: #ffeef3;
+    --mob-count-bg: rgba(255,184,107,.18);
+    --mob-count-border: rgba(255,184,107,.40);
+    --mob-name-color: #c2185b;
+    --mob-name-shadow: none;
+
+    --boss-border: rgba(255,107,157,.65);
+    --boss-bg: linear-gradient(135deg, #fff0f5, #fffaf7);
+    --boss-shadow: 0 0 0 1px rgba(255,107,157,.30), 0 6px 18px rgba(255,107,157,.15);
+    --boss-header-bg: linear-gradient(90deg, #ffe0ec, #fff5fa);
+
+    --desc-bg: #fff5fa;
+    --desc-text: #5c4651;
+    --counter-bg: #fff4e6;
+
+    --footer-bg: linear-gradient(90deg, #fff5fa, #fff8f0);
+    --footer-border: rgba(255,107,157,.40);
+    --header-border: rgba(255,107,157,.25);
+    --stats-bg: linear-gradient(90deg, rgba(255,107,157,.10), rgba(255,184,107,.10));
+    --stats-border: rgba(255,107,157,.20);
+
+    --watermark-big-color: rgba(255,107,157,.10);
+    --watermark-mid-color: rgba(255,184,107,.07);
+
+    --tag-int-bg: #ffe0e6; --tag-int-c: #d63864; --tag-int-bd: rgba(214,56,100,.40);
+    --tag-mag-bg: #f3e8ff; --tag-mag-c: #9333ea; --tag-mag-bd: rgba(147,51,234,.40);
+    --tag-enrage-bg: #ffe0e0; --tag-enrage-c: #dc2626; --tag-enrage-bd: rgba(220,38,38,.40);
+    --tag-bleed-bg: #ffe8d6; --tag-bleed-c: #c2410c; --tag-bleed-bd: rgba(194,65,12,.40);
+    --tag-poison-bg: #d4f4dd; --tag-poison-c: #15803d; --tag-poison-bd: rgba(21,128,61,.40);
+    --tag-disease-bg: #ecf5d8; --tag-disease-c: #65802b; --tag-disease-bd: rgba(101,128,43,.40);
+    --tag-curse-bg: #f3e8f7; --tag-curse-c: #86198f; --tag-curse-bd: rgba(134,25,143,.40);
+
+    --season-bg: linear-gradient(135deg, #ff6b9d 0%, #d63864 100%);
+    --season-c: #fff;
+    --season-shadow: 0 4px 12px rgba(255,107,157,.40);
+
+    --logo-bg: linear-gradient(135deg, #ff6b9d 0%, #ff8c42 100%);
+    --logo-shadow: 0 0 0 2px rgba(255,107,157,.35), 0 0 18px rgba(255,107,157,.30), inset 0 2px 0 rgba(255,255,255,.5);
+    --title-shadow: 0 2px 8px rgba(255,107,157,.25);
+  }
+
+  /* ===== 主题3:赛博朋克霓虹 (cyber) ===== */
+  [data-theme="cyber"] {
+    --page-bg: #06000f;
+    --card-bg-grad: linear-gradient(160deg, #0d0420 0%, #0a0218 50%, #07020f 100%);
+    --card-border-grad: linear-gradient(135deg, #00f0ff 0%, #ff00aa 50%, #b400ff 100%);
+    --card-shadow: 0 20px 60px rgba(255,0,170,.25), 0 0 0 1px rgba(0,240,255,.15), inset 0 1px 0 rgba(255,255,255,.04);
+    --page-glow: radial-gradient(900px 500px at 30% -10%, rgba(0,240,255,.18), transparent 60%),
+                 radial-gradient(700px 350px at 70% 110%, rgba(255,0,170,.18), transparent 60%);
+    --card-top-glow: radial-gradient(500px 180px at 20% 0%, rgba(0,240,255,.22), transparent 70%),
+                     radial-gradient(400px 180px at 80% 0%, rgba(255,0,170,.20), transparent 70%);
+    --rune-dot-1: rgba(0,240,255,.05);
+    --rune-dot-2: rgba(255,0,170,.04);
+
+    --text: #e0faff;
+    --muted: #7a8fb8;
+    --accent: #ff00aa;
+    --accent-2: #00f0ff;
+    --accent-deep: #b400ff;
+    --accent-on: #06000f;
+    --aux: #00f0ff;
+    --aux-deep: #0099b8;
+    --link: #00f0ff;
+    --danger: #ff3b6b;
+    --green: #39ff14;
+
+    --toolbar-bg: rgba(13,4,32,.90);
+    --toolbar-border: #ff00aa;
+    --select-bg: #0d0420;
+
+    --mob-bg: rgba(13,8,38,.85);
+    --mob-border: rgba(0,240,255,.30);
+    --mob-divider: rgba(0,240,255,.15);
+    --mob-header-bg: rgba(6,2,18,.85);
+    --mob-count-bg: rgba(255,0,170,.15);
+    --mob-count-border: rgba(255,0,170,.40);
+    --mob-name-color: #00f0ff;
+    --mob-name-shadow: 0 0 10px rgba(0,240,255,.6), 0 0 20px rgba(0,240,255,.3);
+
+    --boss-border: rgba(255,0,170,.75);
+    --boss-bg: linear-gradient(135deg, rgba(255,0,170,.15), rgba(13,8,38,.85));
+    --boss-shadow: 0 0 0 1px rgba(255,0,170,.40), 0 6px 24px rgba(255,0,170,.30);
+    --boss-header-bg: linear-gradient(90deg, rgba(255,0,170,.30), rgba(6,2,18,.85));
+
+    --desc-bg: rgba(6,2,18,.75);
+    --desc-text: #c0d8ff;
+    --counter-bg: rgba(255,0,170,.12);
+
+    --footer-bg: linear-gradient(90deg, rgba(6,2,18,.95), rgba(13,4,32,.95));
+    --footer-border: rgba(255,0,170,.50);
+    --header-border: rgba(0,240,255,.30);
+    --stats-bg: linear-gradient(90deg, rgba(0,240,255,.12), rgba(255,0,170,.12));
+    --stats-border: rgba(0,240,255,.30);
+
+    --watermark-big-color: rgba(255,0,170,.08);
+    --watermark-mid-color: rgba(0,240,255,.05);
+
+    --tag-int-bg: rgba(255,59,107,.20); --tag-int-c: #ff3b6b; --tag-int-bd: rgba(255,59,107,.7);
+    --tag-mag-bg: rgba(180,0,255,.20); --tag-mag-c: #d966ff; --tag-mag-bd: rgba(180,0,255,.6);
+    --tag-enrage-bg: rgba(255,89,0,.20); --tag-enrage-c: #ff8c42; --tag-enrage-bd: rgba(255,89,0,.6);
+    --tag-bleed-bg: rgba(255,107,0,.18); --tag-bleed-c: #ffaa55; --tag-bleed-bd: rgba(255,107,0,.5);
+    --tag-poison-bg: rgba(57,255,20,.15); --tag-poison-c: #39ff14; --tag-poison-bd: rgba(57,255,20,.5);
+    --tag-disease-bg: rgba(220,255,100,.15); --tag-disease-c: #e0ff66; --tag-disease-bd: rgba(220,255,100,.5);
+    --tag-curse-bg: rgba(255,0,200,.18); --tag-curse-c: #ff66dd; --tag-curse-bd: rgba(255,0,200,.5);
+
+    --season-bg: linear-gradient(135deg, #00f0ff 0%, #b400ff 100%);
+    --season-c: #06000f;
+    --season-shadow: 0 0 16px rgba(0,240,255,.5);
+
+    --logo-bg: linear-gradient(135deg, #ff00aa 0%, #b400ff 100%);
+    --logo-shadow: 0 0 0 2px rgba(255,0,170,.5), 0 0 24px rgba(255,0,170,.6), inset 0 2px 0 rgba(255,255,255,.2);
+    --title-shadow: 0 0 12px rgba(0,240,255,.8), 0 0 24px rgba(0,240,255,.4);
+  }
+
+  /* ===== 主题4:复古羊皮纸卷轴 (parchment) ===== */
+  [data-theme="parchment"] {
+    --page-bg: #2a1f12;
+    --card-bg-grad: linear-gradient(160deg, #f5e6c8 0%, #ead4a8 50%, #d9bf89 100%);
+    --card-border-grad: linear-gradient(135deg, #6b4423 0%, #8b5a2b 50%, #4a2c14 100%);
+    --card-shadow: 0 16px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(107,68,35,.30), inset 0 1px 0 rgba(255,255,255,.4);
+    --page-glow: radial-gradient(900px 500px at 50% -10%, rgba(139,90,43,.30), transparent 60%),
+                 radial-gradient(700px 350px at 50% 110%, rgba(107,68,35,.20), transparent 60%);
+    --card-top-glow: radial-gradient(500px 180px at 20% 0%, rgba(139,90,43,.10), transparent 70%),
+                     radial-gradient(400px 180px at 80% 0%, rgba(107,68,35,.08), transparent 70%);
+    --rune-dot-1: rgba(107,68,35,.08);
+    --rune-dot-2: rgba(139,90,43,.05);
+
+    --text: #3a2410;
+    --muted: #7a5a3d;
+    --accent: #8b3a2b;            /* 朱砂红印章 */
+    --accent-2: #6b2814;
+    --accent-deep: #4a1a08;
+    --accent-on: #f5e6c8;
+    --aux: #6b4423;
+    --aux-deep: #4a2c14;
+    --link: #8b3a2b;
+    --danger: #b8302a;
+    --green: #4a6b2f;
+
+    --toolbar-bg: rgba(245,230,200,.95);
+    --toolbar-border: #8b5a2b;
+    --select-bg: #fff5dc;
+
+    --mob-bg: #fff5dc;
+    --mob-border: rgba(107,68,35,.35);
+    --mob-divider: rgba(107,68,35,.25);
+    --mob-header-bg: #ead4a8;
+    --mob-count-bg: rgba(107,68,35,.18);
+    --mob-count-border: rgba(107,68,35,.40);
+    --mob-name-color: #4a1a08;
+    --mob-name-shadow: none;
+
+    --boss-border: rgba(139,58,43,.75);
+    --boss-bg: linear-gradient(135deg, #ffe8d0, #fff5dc);
+    --boss-shadow: 0 0 0 1px rgba(139,58,43,.40), 0 6px 18px rgba(139,58,43,.20);
+    --boss-header-bg: linear-gradient(90deg, #f5c8a8, #ead4a8);
+
+    --desc-bg: #fff5dc;
+    --desc-text: #4a2c14;
+    --counter-bg: #ffe0b3;
+
+    --footer-bg: linear-gradient(90deg, #ead4a8, #d9bf89);
+    --footer-border: rgba(74,26,8,.50);
+    --header-border: rgba(74,26,8,.35);
+    --stats-bg: linear-gradient(90deg, rgba(139,90,43,.18), rgba(107,68,35,.18));
+    --stats-border: rgba(74,26,8,.30);
+
+    --watermark-big-color: rgba(74,26,8,.10);
+    --watermark-mid-color: rgba(107,68,35,.07);
+
+    --tag-int-bg: #f0c8b8; --tag-int-c: #8b1a08; --tag-int-bd: rgba(139,26,8,.50);
+    --tag-mag-bg: #d8c4e0; --tag-mag-c: #5a2a6b; --tag-mag-bd: rgba(90,42,107,.50);
+    --tag-enrage-bg: #f5b8a0; --tag-enrage-c: #8b2a14; --tag-enrage-bd: rgba(139,42,20,.50);
+    --tag-bleed-bg: #f5d4b8; --tag-bleed-c: #8b4520; --tag-bleed-bd: rgba(139,69,32,.50);
+    --tag-poison-bg: #d4e0b8; --tag-poison-c: #4a6b2f; --tag-poison-bd: rgba(74,107,47,.50);
+    --tag-disease-bg: #e0e8c0; --tag-disease-c: #5a702a; --tag-disease-bd: rgba(90,112,42,.50);
+    --tag-curse-bg: #e0c8e8; --tag-curse-c: #6b2a7a; --tag-curse-bd: rgba(107,42,122,.50);
+
+    --season-bg: linear-gradient(135deg, #8b3a2b 0%, #4a1a08 100%);
+    --season-c: #f5e6c8;
+    --season-shadow: 0 4px 12px rgba(74,26,8,.40);
+
+    --logo-bg: linear-gradient(135deg, #8b3a2b 0%, #4a1a08 100%);
+    --logo-shadow: 0 0 0 2px rgba(74,26,8,.30), 0 4px 12px rgba(74,26,8,.40), inset 0 2px 0 rgba(255,255,255,.2);
+    --title-shadow: 0 2px 4px rgba(74,26,8,.30);
+  }
+
+  /* ===== 主题5:Ins 极简纸卡 (minimal) ===== */
+  [data-theme="minimal"] {
+    --page-bg: #f5f5f7;
+    --card-bg-grad: linear-gradient(160deg, #ffffff 0%, #fafafa 100%);
+    --card-border-grad: linear-gradient(135deg, #e5e5e5 0%, #d4d4d4 50%, #e5e5e5 100%);
+    --card-shadow: 0 8px 24px rgba(0,0,0,.06), 0 2px 6px rgba(0,0,0,.04), 0 0 0 1px rgba(0,0,0,.04);
+    --page-glow: none;
+    --card-top-glow: none;
+    --rune-dot-1: transparent;
+    --rune-dot-2: transparent;
+
+    --text: #1d1d1f;
+    --muted: #86868b;
+    --accent: #1d1d1f;           /* 极简就用纯黑做主色 */
+    --accent-2: #000000;
+    --accent-deep: #424245;
+    --accent-on: #ffffff;
+    --aux: #6e6e73;
+    --aux-deep: #424245;
+    --link: #007aff;
+    --danger: #ff3b30;
+    --green: #34c759;
+
+    --toolbar-bg: rgba(255,255,255,.92);
+    --toolbar-border: #e5e5e7;
+    --select-bg: #ffffff;
+
+    --mob-bg: #ffffff;
+    --mob-border: #e5e5e7;
+    --mob-divider: #f0f0f2;
+    --mob-header-bg: #f9f9fb;
+    --mob-count-bg: #f0f0f2;
+    --mob-count-border: #e5e5e7;
+    --mob-name-color: #000000;
+    --mob-name-shadow: none;
+
+    --boss-border: #1d1d1f;
+    --boss-bg: linear-gradient(135deg, #fafafa, #ffffff);
+    --boss-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 6px 18px rgba(0,0,0,.08);
+    --boss-header-bg: linear-gradient(90deg, #1d1d1f, #2c2c2e);
+
+    --desc-bg: #f9f9fb;
+    --desc-text: #424245;
+    --counter-bg: #fff5e6;
+
+    --footer-bg: linear-gradient(90deg, #f9f9fb, #ffffff);
+    --footer-border: #e5e5e7;
+    --header-border: #e5e5e7;
+    --stats-bg: #fafafa;
+    --stats-border: #e5e5e7;
+
+    --watermark-big-color: rgba(0,0,0,.04);
+    --watermark-mid-color: rgba(0,0,0,.03);
+
+    --tag-int-bg: #ffe5e3; --tag-int-c: #d70015; --tag-int-bd: #ffb3ad;
+    --tag-mag-bg: #e8e0ff; --tag-mag-c: #5e5ce6; --tag-mag-bd: #c4baff;
+    --tag-enrage-bg: #ffded5; --tag-enrage-c: #c2410c; --tag-enrage-bd: #ffb59c;
+    --tag-bleed-bg: #ffeacc; --tag-bleed-c: #a04918; --tag-bleed-bd: #ffd4a0;
+    --tag-poison-bg: #d8f5dd; --tag-poison-c: #1e7e34; --tag-poison-bd: #a8e5b3;
+    --tag-disease-bg: #ecf3d4; --tag-disease-c: #557b1b; --tag-disease-bd: #c8d99f;
+    --tag-curse-bg: #f3e0fa; --tag-curse-c: #8e258f; --tag-curse-bd: #d9b3df;
+
+    --season-bg: #1d1d1f;
+    --season-c: #ffffff;
+    --season-shadow: 0 2px 8px rgba(0,0,0,.15);
+
+    --logo-bg: #1d1d1f;
+    --logo-shadow: 0 4px 12px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.1);
+    --title-shadow: none;
+  }
+  /* BOSS 在极简主题中标题需要白色,因为头部是黑色 */
+  [data-theme="minimal"] .mob-block.is-boss .mob-header { color: #fff; }
+  [data-theme="minimal"] .mob-block.is-boss .mob-name-zh { color: #ffffff !important; }
+  [data-theme="minimal"] .mob-block.is-boss .mob-name-en { color: rgba(255,255,255,.6); }
+  [data-theme="minimal"] .mob-block.is-boss .mob-count { color: #fff; background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.25); }
+
+  /* ============================================================
+     通用样式 (使用变量,与主题无关)
+     ============================================================ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--page-bg); color: var(--text); -webkit-font-smoothing: antialiased; transition: background .25s; }
+  body {
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", PingFang SC, "Microsoft Yahei", sans-serif;
+    min-height: 100vh;
+    padding: 20px 12px 60px;
+    background: var(--page-glow), var(--page-bg);
+    transition: background .25s, color .25s;
+  }
+
+  /* ===== 顶部工具栏 ===== */
+  .toolbar {
+    max-width: 1080px;
+    margin: 0 auto 24px;
+    padding: 12px 16px;
+    background: var(--toolbar-bg);
+    border: 1px solid var(--toolbar-border);
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  .toolbar select, .toolbar button {
+    background: var(--select-bg); color: var(--text); border: 1px solid var(--toolbar-border);
+    border-radius: 8px; padding: 7px 14px; font-size: 14px; cursor: pointer;
+    transition: all .15s;
+  }
+  .toolbar select:hover, .toolbar button:hover { border-color: var(--accent); }
+  .toolbar .back {
+    color: var(--accent); text-decoration: none; font-weight: 700;
+    padding: 7px 14px; border-radius: 8px;
+    border: 1px solid var(--accent); background: transparent;
+  }
+  .toolbar .back:hover { background: var(--accent); color: var(--accent-on); }
+  .toolbar .share-btn {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+    color: var(--accent-on); border: none; font-weight: 700;
+  }
+  .toolbar .share-btn:hover { filter: brightness(1.08); }
+  .toolbar .hint { color: var(--muted); font-size: 12px; margin-left: auto; }
+
+  /* ===== 卡片容器 ===== */
+  .cards {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+
+  .card {
+    width: 100%;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    background: var(--card-bg-grad) padding-box, var(--card-border-grad) border-box;
+    border: 2px solid transparent;
+    box-shadow: var(--card-shadow);
+    page-break-inside: avoid;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 180px;
+    background: var(--card-top-glow);
+    pointer-events: none; z-index: 0;
+  }
+  .card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(var(--rune-dot-1) 1px, transparent 1px),
+      radial-gradient(var(--rune-dot-2) 1px, transparent 1px);
+    background-size: 32px 32px, 32px 32px;
+    background-position: 0 0, 16px 16px;
+    pointer-events: none; opacity: .8; z-index: 0;
+  }
+
+  /* ===== 卡片头部 ===== */
+  .card-header {
+    position: relative;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--header-border);
+    display: flex; align-items: center; gap: 14px;
+    z-index: 1;
+  }
+  .card-logo {
+    width: 48px; height: 48px;
+    background: var(--logo-bg);
+    color: var(--accent-on); font-weight: 900; font-size: 24px;
+    display: grid; place-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    box-shadow: var(--logo-shadow);
+    font-family: "STKaiti", "KaiTi", "PingFang SC", serif;
+  }
+  .card-title-wrap { flex: 1; min-width: 0; }
+  .card-title {
+    font-size: 22px; font-weight: 800;
+    color: var(--accent-2);
+    text-shadow: var(--title-shadow);
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  .card-title-en {
+    margin-top: 2px;
+    font-size: 12px; color: var(--muted);
+    font-style: italic;
+    letter-spacing: .5px;
+  }
+  .card-season {
+    background: var(--season-bg);
+    color: var(--season-c);
+    padding: 5px 12px; border-radius: 999px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: var(--season-shadow);
+    white-space: nowrap;
+  }
+
+  /* ===== 统计条 ===== */
+  .card-stats {
+    display: flex; gap: 0;
+    background: var(--stats-bg);
+    border-bottom: 1px solid var(--stats-border);
+    position: relative; z-index: 1;
+  }
+  .stat-item {
+    flex: 1;
+    padding: 10px 8px;
+    text-align: center;
+    border-right: 1px solid var(--mob-divider);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-size: 20px; font-weight: 800;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .stat-num.total { color: var(--accent-2); }
+  .stat-num.int { color: var(--danger); }
+  .stat-num.mag { color: var(--aux); }
+  .stat-num.boss { color: var(--accent); }
+  .stat-label {
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* ===== 怪物分组 ===== */
+  .mob-list {
+    padding: 14px 16px;
+    position: relative; z-index: 1;
+  }
+  .mob-block {
+    margin-bottom: 14px;
+    background: var(--mob-bg);
+    border: 1px solid var(--mob-border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+  .mob-block:last-child { margin-bottom: 0; }
+  .mob-block.is-boss {
+    border-color: var(--boss-border);
+    background: var(--boss-bg);
+    box-shadow: var(--boss-shadow);
+  }
+
+  /* 小怪头部:左侧加色块条,名字更醒目 */
+  .mob-header {
+    padding: 10px 14px;
+    background: var(--mob-header-bg);
+    border-bottom: 1px solid var(--mob-divider);
+    display: flex; align-items: center; gap: 10px;
+    border-left: 4px solid var(--aux);
+  }
+  .mob-block.is-boss .mob-header {
+    background: var(--boss-header-bg);
+    border-left: 4px solid var(--accent);
+    padding: 12px 14px;
+  }
+  .boss-badge {
+    background: var(--logo-bg);
+    color: var(--accent-on); font-weight: 900; font-size: 11px;
+    padding: 3px 9px; border-radius: 5px;
+    letter-spacing: 1.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  /* 普通怪物名:加大 + 加粗 + 主题强调色 */
+  .mob-name-zh {
+    font-size: 16px; font-weight: 800;
+    color: var(--mob-name-color);
+    letter-spacing: .5px;
+    text-shadow: var(--mob-name-shadow);
+  }
+  /* BOSS 名:再大一档 + 主题主色发光 */
+  .mob-block.is-boss .mob-name-zh {
+    font-size: 18px;
+    color: var(--accent-2);
+    text-shadow: var(--title-shadow);
+    letter-spacing: 1px;
+  }
+  .mob-name-en {
+    font-size: 11px; color: var(--muted);
+    font-style: italic; margin-left: 4px;
+    font-weight: 500;
+  }
+  .mob-count {
+    margin-left: auto;
+    font-size: 11px; color: var(--text); font-weight: 600;
+    background: var(--mob-count-bg);
+    border: 1px solid var(--mob-count-border);
+    padding: 2px 9px; border-radius: 10px;
+  }
+
+  /* ===== 技能列表 ===== */
+  .spell-list { padding: 2px 0; }
+  .spell-row {
+    padding: 9px 14px;
+    border-bottom: 1px dashed var(--mob-divider);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 12px;
+    align-items: start;
+  }
+  .spell-row:last-child { border-bottom: none; }
+  .spell-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .spell-name {
+    font-size: 15px; font-weight: 800;
+    color: var(--link);
+    line-height: 1.3;
+    letter-spacing: .3px;
+  }
+  .spell-meta { font-size: 11px; color: var(--muted); font-weight: 500; }
+  .spell-desc {
+    font-size: 13px; color: var(--desc-text);
+    line-height: 1.55;
+    grid-column: 1 / -1;
+    padding: 7px 12px;
+    background: var(--desc-bg);
+    border-left: 3px solid var(--aux);
+    border-radius: 0 5px 5px 0;
+  }
+  .spell-counter {
+    font-size: 13px; color: var(--accent-deep);
+    line-height: 1.55;
+    grid-column: 1 / -1;
+    padding: 7px 12px;
+    background: var(--counter-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 5px 5px 0;
+    font-weight: 700;
+  }
+  .spell-counter::before { content: "💡 "; }
+  .spell-tags {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    max-width: 180px;
+  }
+
+  /* ===== 标签 ===== */
+  .tag {
+    display: inline-block; padding: 3px 8px; border-radius: 5px;
+    font-size: 11px; font-weight: 800; line-height: 1.4;
+    letter-spacing: .5px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .tag-int { background: var(--tag-int-bg); color: var(--tag-int-c); border-color: var(--tag-int-bd); }
+  .tag-mag { background: var(--tag-mag-bg); color: var(--tag-mag-c); border-color: var(--tag-mag-bd); }
+  .tag-enrage { background: var(--tag-enrage-bg); color: var(--tag-enrage-c); border-color: var(--tag-enrage-bd); }
+  .tag-bleed { background: var(--tag-bleed-bg); color: var(--tag-bleed-c); border-color: var(--tag-bleed-bd); }
+  .tag-poison { background: var(--tag-poison-bg); color: var(--tag-poison-c); border-color: var(--tag-poison-bd); }
+  .tag-disease { background: var(--tag-disease-bg); color: var(--tag-disease-c); border-color: var(--tag-disease-bd); }
+  .tag-curse { background: var(--tag-curse-bg); color: var(--tag-curse-c); border-color: var(--tag-curse-bd); }
+
+  /* ===== 水印 ===== */
+  .watermark-big {
+    position: absolute;
+    bottom: 80px; right: -30px;
+    font-size: 72px; font-weight: 900;
+    color: var(--watermark-big-color);
+    letter-spacing: 8px;
+    transform: rotate(-18deg);
+    pointer-events: none; user-select: none;
+    font-family: "STKaiti", "KaiTi", serif;
+    z-index: 1;
+  }
+  .watermark-mid {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    font-size: 60px; font-weight: 900;
+    color: var(--watermark-mid-color);
+    letter-spacing: 12px;
+    pointer-events: none; user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+  }
+
+  /* ===== 底部品牌条 ===== */
+  .card-footer {
+    position: relative; z-index: 2;
+    background: var(--footer-bg);
+    border-top: 1px solid var(--footer-border);
+    padding: 10px 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .footer-logo {
+    width: 28px; height: 28px;
+    background: var(--logo-bg);
+    color: var(--accent-on); font-weight: 900; font-size: 14px;
+    display: grid; place-items: center;
+    border-radius: 6px;
+    font-family: "STKaiti", "KaiTi", serif;
+    flex-shrink: 0;
+  }
+  .footer-brand { display: flex; flex-direction: column; line-height: 1.2; }
+  .footer-name { font-size: 12px; font-weight: 700; color: var(--accent-2); }
+  .footer-tag { font-size: 10px; color: var(--muted); margin-top: 1px; }
+  .footer-social {
+    margin-left: auto; text-align: right;
+    font-size: 10px; color: var(--muted); line-height: 1.4;
+  }
+  .footer-social .hl { color: var(--accent); font-weight: 700; }
+
+  /* ===== 分享模式 ===== */
+  body.share-mode .toolbar { display: none; }
+  body.share-mode { padding: 12px 12px 40px; }
+  body.share-mode .cards { gap: 40px; }
+
+  /* ===== 空状态 ===== */
+  .empty {
+    text-align: center; padding: 80px 20px;
+    color: var(--muted); font-size: 16px;
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 720px) {
+    body { padding: 12px 8px 40px; }
+    .card-header { padding: 14px 14px 12px; gap: 10px; }
+    .card-logo { width: 40px; height: 40px; font-size: 20px; border-radius: 10px; }
+    .card-title { font-size: 18px; letter-spacing: .5px; }
+    .card-title-en { font-size: 10px; }
+    .card-season { padding: 3px 9px; font-size: 10px; }
+    .stat-item { padding: 8px 6px; }
+    .stat-num { font-size: 18px; }
+    .stat-label { font-size: 9px; letter-spacing: .5px; }
+    .mob-list { padding: 10px 10px; }
+    .mob-block { margin-bottom: 12px; border-radius: 8px; }
+    .mob-header { padding: 9px 12px; border-left-width: 3px; }
+    .mob-block.is-boss .mob-header { padding: 10px 12px; border-left-width: 3px; }
+    .mob-name-zh { font-size: 15px; }
+    .mob-block.is-boss .mob-name-zh { font-size: 17px; }
+    .mob-name-en { font-size: 10px; }
+    .mob-count { font-size: 10px; padding: 1px 7px; }
+    .spell-row { padding: 8px 12px; grid-template-columns: 1fr; gap: 5px; }
+    .spell-tags { max-width: none; justify-content: flex-start; }
+    .spell-name { font-size: 14px; }
+    .spell-desc, .spell-counter { font-size: 12px; padding: 6px 10px; }
+    .tag { font-size: 10px; padding: 2px 7px; }
+    .watermark-big { font-size: 44px; bottom: 50px; }
+    .watermark-mid { font-size: 36px; letter-spacing: 6px; }
+    .card-footer { padding: 8px 12px; gap: 8px; }
+    .footer-logo { width: 26px; height: 26px; font-size: 13px; }
+    .footer-name { font-size: 11px; }
+    .footer-tag, .footer-social { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html" class="back">← 返回查询站</a>
+  <select id="theme" title="切换主题">
+    <option value="dark">🌙 WoW 魔幻暗夜</option>
+    <option value="light">🌸 小红书奶油</option>
+    <option value="cyber">⚡ 赛博朋克霓虹</option>
+    <option value="parchment">📜 复古羊皮卷轴</option>
+    <option value="minimal">⚪ Ins 极简纸卡</option>
+  </select>
+  <select id="season"><option value="">全部赛季</option></select>
+  <select id="dungeon"><option value="">全部副本</option></select>
+  <button type="button" class="share-btn" id="shareBtn">📷 分享模式</button>
+  <span class="hint">长截图分享到小红书/抖音/B站</span>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<script>
+const BRAND = "西番芥的秘境工具箱";
+const BILIBILI_ID = "346688237";
+const THEME_KEY = "mss_theme_v1";
+
+const ESC = { "\u0026": "\u0026amp;", "\u003c": "\u0026lt;", "\u003e": "\u0026gt;", "\u0022": "\u0026quot;", "\u0027": "\u0026#39;" };
+const escapeHtml = (s) => String(s == null ? "" : s).replace(/[\u0026\u003c\u003e\u0022\u0027]/g, (c) => ESC[c]);
+
+let allRows = [], allDungeons = [], allSeasons = [];
+
+/* ========== 主题切换 ========== */
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+  const sel = document.getElementById("theme");
+  if (sel && sel.value !== theme) sel.value = theme;
+}
+function initTheme() {
+  let saved = "dark";
+  try { saved = localStorage.getItem(THEME_KEY) || "dark"; } catch (e) {}
+  applyTheme(saved);
+  document.getElementById("theme").addEventListener("change", (e) => applyTheme(e.target.value));
+}
+
+async function load() {
+  const res = await fetch("data.json", { cache: "no-cache" });
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  const data = await res.json();
+
+  allSeasons = Object.keys(data.seasons || {});
+  allDungeons = data.dungeons || [];
+  allRows = data.rows || [];
+
+  const sSel = document.getElementById("season");
+  allSeasons.forEach((s) => {
+    const opt = document.createElement("option");
+    opt.value = s; opt.textContent = s;
+    sSel.appendChild(opt);
+  });
+
+  const dSel = document.getElementById("dungeon");
+  allDungeons.forEach((d) => {
+    const opt = document.createElement("option");
+    opt.value = d.name; opt.textContent = d.name;
+    dSel.appendChild(opt);
+  });
+
+  render();
+}
+
+function buildSpellTags(r) {
+  const tags = [];
+  if (r.interruptible) tags.push('<span class="tag tag-int">可打断</span>');
+  if (r.isMagic) tags.push('<span class="tag tag-mag">魔法</span>');
+  if (r.isEnrage) tags.push('<span class="tag tag-enrage">激怒</span>');
+  if (r.isBleed) tags.push('<span class="tag tag-bleed">流血</span>');
+  if (r.isPoison) tags.push('<span class="tag tag-poison">中毒</span>');
+  if (r.isDisease) tags.push('<span class="tag tag-disease">疾病</span>');
+  if (r.isCurse) tags.push('<span class="tag tag-curse">诅咒</span>');
+  return tags.join("");
+}
+
+function render() {
+  const season = document.getElementById("season").value;
+  const dungeon = document.getElementById("dungeon").value;
+  const container = document.getElementById("cards");
+
+  let rows = allRows;
+  if (season) rows = rows.filter((r) => r.season === season);
+  if (dungeon) rows = rows.filter((r) => r.dungeonZh === dungeon);
+
+  // 分享卡去重: 同一副本+怪物下, 技能名 + 描述 + 应对 + 标签组合相同的视为重复, 仅展示一条
+  // 原始 allRows 保持不变, 只影响展示
+  const dedupSeen = new Set();
+  rows = rows.filter((r) => {
+    const tagSig = [r.interruptible, r.isMagic, r.isEnrage, r.isBleed, r.isPoison, r.isDisease, r.isCurse]
+      .map((b) => (b ? 1 : 0)).join("");
+    const key = [
+      r.dungeonZh || "",
+      r.npcId || r.mobZh || "",
+      (r.spellName || "").trim(),
+      (r.description || "").trim(),
+      (r.counter || "").trim(),
+      tagSig,
+    ].join("||");
+    if (dedupSeen.has(key)) return false;
+    dedupSeen.add(key);
+    return true;
+  });
+
+  const groups = {};
+  for (const r of rows) {
+    const key = r.dungeonZh || "未知";
+    if (!groups[key]) groups[key] = { dungeonZh: key, dungeonEn: r.dungeonEn, season: r.season, rows: [] };
+    groups[key].rows.push(r);
+  }
+
+  const dungeonNames = Object.keys(groups);
+  if (!dungeonNames.length) {
+    container.innerHTML = '<div class="empty">暂无数据</div>';
+    return;
+  }
+
+  container.innerHTML = dungeonNames.map((name) => {
+    const g = groups[name];
+    const intCnt = g.rows.filter((r) => r.interruptible).length;
+    const magCnt = g.rows.filter((r) => r.isMagic).length;
+    const bossSet = new Set();
+    g.rows.forEach((r) => { if (r.isBoss) bossSet.add(r.mobZh); });
+    const bossCnt = bossSet.size;
+
+    const mobs = {}; const mobOrder = [];
+    for (const r of g.rows) {
+      const k = (r.npcId || r.mobZh) + "|" + r.mobZh;
+      if (!mobs[k]) {
+        mobs[k] = { mobZh: r.mobZh, mobEn: r.mobEn, isBoss: r.isBoss, spells: [] };
+        mobOrder.push(k);
+      }
+      mobs[k].spells.push(r);
+    }
+    mobOrder.sort((a, b) => (mobs[b].isBoss ? 1 : 0) - (mobs[a].isBoss ? 1 : 0));
+
+    const mobsHtml = mobOrder.map((k) => {
+      const m = mobs[k];
+      const spellsHtml = m.spells.map((r) => {
+        const tags = buildSpellTags(r);
+        const desc = r.description ? '<div class="spell-desc">' + escapeHtml(r.description) + '</div>' : '';
+        const counter = r.counter ? '<div class="spell-counter">' + escapeHtml(r.counter) + '</div>' : '';
+        return '<div class="spell-row">' +
+          '<div class="spell-main">' +
+            '<div class="spell-name">' + escapeHtml(r.spellName) + '</div>' +
+            '<div class="spell-meta">ID ' + escapeHtml(r.spellId) + '</div>' +
+          '</div>' +
+          '<div class="spell-tags">' + (tags || '<span class="spell-meta">—</span>') + '</div>' +
+          desc + counter +
+          '</div>';
+      }).join("");
+
+      return '<div class="mob-block' + (m.isBoss ? ' is-boss' : '') + '">' +
+        '<div class="mob-header">' +
+          (m.isBoss ? '<span class="boss-badge">BOSS</span>' : '') +
+          '<span class="mob-name-zh">' + escapeHtml(m.mobZh) + '</span>' +
+      '<span class="mob-name-en">' + escapeHtml(m.mobEn) + '</span>' +
+          '<span class="mob-count">' + m.spells.length + ' 技能</span>' +
+        '</div>' +
+        '<div class="spell-list">' + spellsHtml + '</div>' +
+        '</div>';
+    }).join("");
+
+    return '<div class="card">' +
+      '<div class="watermark-mid">西番芥 · 西番芥 · 西番芥</div>' +
+      '<div class="watermark-big">西番芥</div>' +
+      '<div class="card-header">' +
+        '<div class="card-logo">西</div>' +
+        '<div class="card-title-wrap">' +
+          '<div class="card-title">' + escapeHtml(g.dungeonZh) + '</div>' +
+          '<div class="card-title-en">' + escapeHtml(g.dungeonEn || '') + '</div>' +
+        '</div>' +
+        '<span class="card-season">' + escapeHtml(g.season) + '</span>' +
+      '</div>' +
+      '<div class="card-stats">' +
+        '<div class="stat-item"><div class="stat-num total">' + g.rows.length + '</div><div class="stat-label">技能总数</div></div>' +
+        '<div class="stat-item"><div class="stat-num int">' + intCnt + '</div><div class="stat-label">可打断</div></div>' +
+        '<div class="stat-item"><div class="stat-num mag">' + magCnt + '</div><div class="stat-label">可驱散</div></div>' +
+        '<div class="stat-item"><div class="stat-num boss">' + bossCnt + '</div><div class="stat-label">BOSS</div></div>' +
+      '</div>' +
+      '<div class="mob-list">' + mobsHtml + '</div>' +
+      '<div class="card-footer">' +
+        '<div class="footer-logo">西</div>' +
+        '<div class="footer-brand">' +
+          '<div class="footer-name">' + BRAND + '</div>' +
+          '<div class="footer-tag">WoW 大秘境技能速查 · 数据基于 MythicDungeonTools</div>' +
+        '</div>' +
+        '<div class="footer-social">' +
+          'B站 <span class="hl">西番芥</span><br>' +
+          'space.bilibili.com/' + BILIBILI_ID +
+        '</div>' +
+      '</div>' +
+      '</div>';
+  }).join("");
+}
+
+document.getElementById("season").addEventListener("change", render);
+document.getElementById("dungeon").addEventListener("change", render);
+document.getElementById("shareBtn").addEventListener("click", () => {
+  document.body.classList.toggle("share-mode");
+  const btn = document.getElementById("shareBtn");
+  btn.textContent = document.body.classList.contains("share-mode") ? "✕ 退出分享模式" : "📷 分享模式";
+});
+
+initTheme();
+load();
+</script>
+</body>
+</html>
