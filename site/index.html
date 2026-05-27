@@ -167,8 +167,7 @@
   .dungeon { color: var(--accent-2); font-weight: 600; white-space: nowrap; }
   .mob { white-space: nowrap; }
   .mob .en { color: var(--muted); font-size: 12px; }
-  .counter { color: var(--danger); font-weight: 600; max-width: 240px; word-break: break-word; }
-  .empty { padding: 60px 20px; text-align: center; color: var(--muted); }
+.empty { padding: 60px 20px; text-align: center; color: var(--muted); }
   .empty .big { font-size: 32px; margin-bottom: 8px; }
 
   /* ===== 页脚 ===== */
@@ -257,7 +256,6 @@
             <th class="col-poison">中毒</th>
             <th class="col-disease">疾病</th>
             <th class="col-curse">诅咒</th>
-            <th class="col-counter">应对</th>
             <th class="col-desc">描述</th>
           </tr>
         </thead>
@@ -289,7 +287,7 @@ const COLUMNS = [
   { key: "poison", label: "中毒", default: false },
   { key: "disease", label: "疾病", default: false },
   { key: "curse", label: "诅咒", default: false },
-  { key: "counter", label: "应对", default: true },
+  
   { key: "desc", label: "描述", default: true },
 ];
 
@@ -363,6 +361,8 @@ const $ = (s) => document.querySelector(s);
 const ESC = { "\u0026": "\u0026amp;", "\u003c": "\u0026lt;", "\u003e": "\u0026gt;", "\u0022": "\u0026quot;", "\u0027": "\u0026#39;" };
 const escapeHtml = (s) => String(s == null ? "" : s).replace(/[\u0026\u003c\u003e\u0022\u0027]/g, (c) => ESC[c]);
 
+
+
 async function load() {
   try {
     const res = await fetch("data.json", { cache: "no-cache" });
@@ -382,7 +382,7 @@ async function load() {
       spellName: r.spellName || "",
       spellId: r.spellId || "",
       description: r.description || "",
-      counter: r.counter || "",
+
       interruptible: !!r.interruptible,
       isMagic: !!r.isMagic,
       isEnrage: !!r.isEnrage,
@@ -436,7 +436,7 @@ function render() {
     if (state.onlyInterrupt && !r.interruptible) return false;
     if (state.onlyMagic && !r.isMagic) return false;
     if (q) {
-      const hay = (r.spellName + " " + r.mobZh + " " + r.mobEn + " " + r.description + " " + r.counter).toLowerCase();
+      const hay = (r.spellName + " " + r.mobZh + " " + r.mobEn + " " + r.description).toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
@@ -463,12 +463,18 @@ function render() {
     "<div class=\"sid\">ID " + escapeHtml(r.spellId) + "</div></td>" +
     "<td class=\"col-int\">" + (r.interruptible ? "<span class=\"tag tag-int\">可打断</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
     "<td class=\"col-mag\">" + (r.isMagic ? "<span class=\"tag tag-mag\">魔法</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
-    "<td class=\"col-enrage\">" + (r.isEnrage ? "<span class=\"tag tag-enrage\">激怒</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
-    "<td class=\"col-bleed\">" + (r.isBleed ? "<span class=\"tag tag-bleed\">流血</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
-    "<td class=\"col-poison\">" + (r.isPoison ? "<span class=\"tag tag-poison\">中毒</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
-    "<td class=\"col-disease\">" + (r.isDisease ? "<span class=\"tag tag-disease\">疾病</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
-    "<td class=\"col-curse\">" + (r.isCurse ? "<span class=\"tag tag-curse\">诅咒</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
-    "<td class=\"counter col-counter\">" + escapeHtml(r.counter || "") + "</td>" +
+    (r.isEnrage && r.isBleed && r.isPoison && r.isDisease && r.isCurse
+      ? "<td class=\"col-enrage\"><span class=\"tag tag-no\">—</span></td>" +
+        "<td class=\"col-bleed\"><span class=\"tag tag-no\">—</span></td>" +
+        "<td class=\"col-poison\"><span class=\"tag tag-no\">—</span></td>" +
+        "<td class=\"col-disease\"><span class=\"tag tag-no\">—</span></td>" +
+        "<td class=\"col-curse\"><span class=\"tag tag-no\">—</span></td>"
+      : "<td class=\"col-enrage\">" + (r.isEnrage ? "<span class=\"tag tag-enrage\">激怒</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
+        "<td class=\"col-bleed\">" + (r.isBleed ? "<span class=\"tag tag-bleed\">流血</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
+        "<td class=\"col-poison\">" + (r.isPoison ? "<span class=\"tag tag-poison\">中毒</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
+        "<td class=\"col-disease\">" + (r.isDisease ? "<span class=\"tag tag-disease\">疾病</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>" +
+        "<td class=\"col-curse\">" + (r.isCurse ? "<span class=\"tag tag-curse\">诅咒</span>" : "<span class=\"tag tag-no\">—</span>") + "</td>"
+    ) +
     "<td class=\"desc col-desc\">" + escapeHtml(r.description || "") + "</td>" +
     "</tr>"
   )).join("");

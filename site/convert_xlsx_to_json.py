@@ -43,7 +43,7 @@ COLUMN_MAP = {
     "中毒": "isPoison",
     "疾病": "isDisease",
     "诅咒": "isCurse",
-    "应对方式": "counter",
+    
 }
 
 # 文件名格式即为赛季名，如 12.0-S1.xlsx → 赛季 12.0-S1

@@ -29,7 +29,6 @@ for r in d['rows']:
             '<td>' + ('<span class="tag tag-poison">中毒</span>' if r['isPoison'] else '<span class="tag tag-no">—</span>') + '</td>' +
             '<td>' + ('<span class="tag tag-disease">疾病</span>' if r['isDisease'] else '<span class="tag tag-no">—</span>') + '</td>' +
             '<td>' + ('<span class="tag tag-curse">诅咒</span>' if r['isCurse'] else '<span class="tag tag-no">—</span>') + '</td>' +
-            '<td class="counter">' + eh(r.get('counter', '')) + '</td>' +
             '<td class="desc">' + eh(r.get('description', '')) + '</td>' +
             '</tr>'
         )
@@ -39,6 +38,5 @@ for r in d['rows']:
         close_tr = row_html.count('</tr>')
         print(f'<td> count: {td_count}, <tr> count: {tr_count}, </tr> count: {close_tr}')
         # 检查是否有未闭合标签
-        print(f'counter field: {repr(r.get("counter", ""))}')
         print(f'description field: {repr(r.get("description", ""))}')
         break
